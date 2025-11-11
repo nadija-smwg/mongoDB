@@ -1,0 +1,466 @@
+test> use natours-test
+switched to db natours-test
+natours-test> db.tours.insertMany()
+MongoshInvalidInputError: [COMMON-10001] Missing required argument at position 0 (Collection.insertMany)
+natours-test> db.tours.insertOne({name: "The Forest Hoker", price: 297, rating: 4.7)
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:69)
+
+> 1 | db.tours.insertOne({name: "The Forest Hoker", price: 297, rating: 4.7)
+    |                                                                      ^
+  2 |
+
+natours-test> db.tours.insertOne({name: "The Forest Hoker", price: 297, rating: 4.7})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6912bafee642d6231463b112')
+}
+natours-test> db.tours.find()
+[
+  {
+    _id: ObjectId('6912bafee642d6231463b112'),
+    name: 'The Forest Hoker',
+    price: 297,
+    rating: 4.7
+  }
+]
+natours-test> show dbs
+admin         40.00 KiB
+config        36.00 KiB
+local         40.00 KiB
+natours-test  40.00 KiB
+natours-test> use db admin
+switched to db db
+db> use natours-test
+switched to db natours-test
+natours-test> show collection
+MongoshInvalidInputError: [COMMON-10001] 'collection' is not a valid argument for "show".
+natours-test> show collections
+tours
+natours-test> tours
+ReferenceError: tours is not defined
+natours-test> quick()
+ReferenceError: quick is not defined
+natours-test> quit()
+PS C:\Users\KM Computers>
+PS C:\Users\KM Computers> show dbs
+show : The term 'show' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path
+was included, verify that the path is correct and try again.
+At line:1 char:1
++ show dbs
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (show:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\KM Computers> mongos
+{"t":{"$date":"2025-11-11T11:14:30.371+05:30"},"s":"I",  "c":"-",        "id":8991200, "ctx":"thread1","msg":"Shuffling initializers","attr":{"seed":3825035872}}
+BadValue: error: no args for --configdb
+try 'C:\Program Files\MongoDB\Server\8.2\bin\mongos.exe --help' for more information
+PS C:\Users\KM Computers>
+PS C:\Users\KM Computers> show dbs
+show : The term 'show' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path
+was included, verify that the path is correct and try again.
+At line:1 char:1
++ show dbs
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (show:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\KM Computers> mongos
+{"t":{"$date":"2025-11-11T11:14:55.560+05:30"},"s":"I",  "c":"-",        "id":8991200, "ctx":"thread1","msg":"Shuffling initializers","attr":{"seed":3448307454}}
+BadValue: error: no args for --configdb
+try 'C:\Program Files\MongoDB\Server\8.2\bin\mongos.exe --help' for more information
+PS C:\Users\KM Computers>
+test> show dbs
+admin         40.00 KiB
+config        72.00 KiB
+local         40.00 KiB
+natours-test  40.00 KiB
+test> use natous-test
+switched to db natous-test
+natous-test> db.tours.insertMany([{name: "The sea Explore", price: 497, rating: 4.8}, {name: "The snow Adventurer", price: 997, rating: 4.9, difficulty: "easy"}}])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:147)
+
+> 1 | db.tours.insertMany([{name: "The sea Explore", price: 497, rating: 4.8}, {name: "The snow Adventurer", price: 997, rating: 4.9, difficulty: "easy"}}])
+    |                                                                                                                                                    ^
+  2 |
+
+natous-test> db.tours.insertMany([{name: "The sea Explore", price: 497, rating: 4.8}, {name: "The snow Adventurer", price: 997, rating: 4.9, difficulty: "easy"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6912cebd081ddb618863b112'),
+    '1': ObjectId('6912cebd081ddb618863b113')
+  }
+}
+natous-test> db.tours.find()
+[
+  {
+    _id: ObjectId('6912cebd081ddb618863b112'),
+    name: 'The sea Explore',
+natous-test> db.tours.find()
+[
+  {
+    _id: ObjectId('6912cebd081ddb618863b112'),
+    name: 'The sea Explore',
+    price: 497,
+    rating: 4.8
+  },
+  {
+    _id: ObjectId('6912cebd081ddb618863b113'),
+    name: 'The snow Adventurer',
+    price: 997,
+    rating: 4.9,
+    difficulty: 'easy'
+  },
+  {
+    _id: ObjectId('6912d13a081ddb618863b114'),
+    name: 'The sea Explore22222',
+    price: 1497,
+    rating: 4.1
+  }
+]
+natous-test> db.tours.find({name: "The sea Explore"})
+[
+  {
+    _id: ObjectId('6912cebd081ddb618863b112'),
+    name: 'The sea Explore',
+    price: 497,
+    rating: 4.8
+  }
+]
+natous-test> db.tours.find({difficulty})
+ReferenceError: difficulty is not defined
+natous-test> db.tours.find({difficulty: "easy"})
+[
+  {
+    _id: ObjectId('6912cebd081ddb618863b113'),
+    name: 'The snow Adventurer',
+    price: 997,
+    rating: 4.9,
+    difficulty: 'easy'
+  }
+]
+natous-test> db.tours.find({price: {$lte: 500})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:33)
+
+> 1 | db.tours.find({price: {$lte: 500})
+    |                                  ^
+  2 |
+
+natous-test> db.tours.find({price: {$lte: 500}})
+[
+  {
+    _id: ObjectId('6912cebd081ddb618863b112'),
+    name: 'The sea Explore',
+    price: 497,
+    rating: 4.8
+  }
+]
+natous-test> db.tours.find({price: {$lt: 500}}, {rating: {$gte: 4.8}})
+MongoServerError[Location16020]: Expression $gte takes exactly 2 arguments. 1 were passed in.
+natous-test> db.tours.find({price: {$lt: 500}, rating: {$gte: 4.8}})
+[
+  {
+    _id: ObjectId('6912cebd081ddb618863b112'),
+    name: 'The sea Explore',
+    price: 497,
+    rating: 4.8
+  }
+]
+natous-test> db.tours.find({$or: [ {price: {$lt: 500} ,rating: {$gte: 4.8}}]})
+[
+  {
+    _id: ObjectId('6912cebd081ddb618863b112'),
+    name: 'The sea Explore',
+    price: 497,
+    rating: 4.8
+  }
+]
+natous-test> db.tours.find({$or: [ {price: {$gt: 500} ,rating: {$gte: 4.8}}]})
+[
+  {
+    _id: ObjectId('6912cebd081ddb618863b113'),
+    name: 'The snow Adventurer',
+    price: 997,
+    rating: 4.9,
+    difficulty: 'easy'
+  }
+]
+natous-test> db.tours.find({$or: [ {price: {$gt: 500} ,rating: {$lte: 4.8}}]})
+[
+  {
+    _id: ObjectId('6912d13a081ddb618863b114'),
+    name: 'The sea Explore22222',
+    price: 1497,
+    rating: 4.1
+  }
+]
+natous-test> db.tours.find({$or: [ {price: {$gt: 500} ,rating: {$gte: 4}}]})
+[
+  {
+    _id: ObjectId('6912cebd081ddb618863b113'),
+    name: 'The snow Adventurer',
+    price: 997,
+    rating: 4.9,
+    difficulty: 'easy'
+  },
+  {
+    _id: ObjectId('6912d13a081ddb618863b114'),
+    name: 'The sea Explore22222',
+    price: 1497,
+    rating: 4.1
+  }
+]
+natous-test> db.tours.find({ $or: [ {price: {$lte: 500}} ,{rating: {$gte: 4}} ] })
+[
+  {
+    _id: ObjectId('6912cebd081ddb618863b112'),
+    name: 'The sea Explore',
+    price: 497,
+    rating: 4.8
+  },
+  {
+    _id: ObjectId('6912cebd081ddb618863b113'),
+    name: 'The snow Adventurer',
+    price: 997,
+    rating: 4.9,
+    difficulty: 'easy'
+  },
+  {
+    _id: ObjectId('6912d13a081ddb618863b114'),
+    name: 'The sea Explore22222',
+    price: 1497,
+    rating: 4.1
+  }
+]
+natous-test> db.tours.find({ $or: [ {price: {$lte: 500} ,rating: {$gte: 4}
+... db.tours.find({ $or: [ {price: {$lte: 500}} ,{rating: {$gte: 4}} ] })
+Uncaught:
+SyntaxError: Unexpected token, expected "," (2:0)
+
+  1 | db.tours.find({ $or: [ {price: {$lte: 500} ,rating: {$gte: 4}
+> 2 | db.tours.find({ $or: [ {price: {$lte: 500}} ,{rating: {$gte: 4}} ] })
+    | ^
+  3 |
+
+natous-test> db.tours.find({ $or: [ {price: {$lte: 500}} ,{rating: {$gte: 4}} ] })
+[
+  {
+    _id: ObjectId('6912cebd081ddb618863b112'),
+    name: 'The sea Explore',
+    price: 497,
+    rating: 4.8
+  },
+natous-test> db.tours.updateOne({ name: "The Snow Adventurer"}, { $set:{peice: 597} })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+natous-test> db.tours.find()
+[
+  {
+    _id: ObjectId('6912cebd081ddb618863b112'),
+    name: 'The sea Explore',
+    price: 497,
+    rating: 4.8
+  },
+  {
+    _id: ObjectId('6912cebd081ddb618863b113'),
+    name: 'The snow Adventurer',
+    price: 997,
+    rating: 4.9,
+    difficulty: 'easy'
+  },
+  {
+    _id: ObjectId('6912d13a081ddb618863b114'),
+    name: 'The sea Explore22222',
+    price: 1497,
+    rating: 4.1
+  }
+]
+natous-test> db.tours.updateOne({ name: "The snow Adventurer"}, { $set:{peice: 597} })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+natous-test> db.tours.find()
+[
+  {
+    _id: ObjectId('6912cebd081ddb618863b112'),
+    name: 'The sea Explore',
+    price: 497,
+    rating: 4.8
+  },
+  {
+    _id: ObjectId('6912cebd081ddb618863b113'),
+    name: 'The snow Adventurer',
+    price: 997,
+    rating: 4.9,
+    difficulty: 'easy',
+    peice: 597
+  },
+  {
+    _id: ObjectId('6912d13a081ddb618863b114'),
+    name: 'The sea Explore22222',
+    price: 1497,
+    rating: 4.1
+  }
+]
+natous-test> db.tours.find({ $or[{price:{$gte: 500}},{rating :{$gte: 4.8}} ] })
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:19)
+
+> 1 | db.tours.find({ $or[{price:{$gte: 500}},{rating :{$gte: 4.8}} ] })
+    |                    ^
+  2 |
+
+natous-test> db.tours.find({ $or [{price:{$gte: 500}, rating :{$gte: 4.8}} ] })
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:20)
+
+> 1 | db.tours.find({ $or [{price:{$gte: 500}, rating :{$gte: 4.8}} ] })
+    |                     ^
+  2 |
+
+natous-test> db.tours.find({ $or: [{price:{$gte: 500}},{rating :{$gte: 4.8}} ] })
+[
+  {
+    _id: ObjectId('6912cebd081ddb618863b112'),
+    name: 'The sea Explore',
+    price: 497,
+    rating: 4.8
+  },
+  {
+    _id: ObjectId('6912cebd081ddb618863b113'),
+    name: 'The snow Adventurer',
+    price: 997,
+    rating: 4.9,
+    difficulty: 'easy',
+    peice: 597
+  },
+  {
+    _id: ObjectId('6912d13a081ddb618863b114'),
+    name: 'The sea Explore22222',
+    price: 1497,
+    rating: 4.1
+  }
+]
+natous-test> db.tours.find({ price:{$gte: 500},rating :{$gte: 4.8}} )
+[
+  {
+    _id: ObjectId('6912cebd081ddb618863b113'),
+    name: 'The snow Adventurer',
+    price: 997,
+    rating: 4.9,
+    difficulty: 'easy',
+    peice: 597
+  }
+]
+natous-test> db.tours.updateMany({ price: {$gt: 500}, {rating: {$gte: 4.8} },{ $set:{premium: true}})
+Uncaught:
+SyntaxError: Unexpected token (1:41)
+
+> 1 | db.tours.updateMany({ price: {$gt: 500}, {rating: {$gte: 4.8} },{ $set:{premium: true}})
+    |                                          ^
+  2 |
+
+natous-test> db.tours.updateMany({ price: {$gt: 500}, rating: {$gte: 4.8} },{ $set:{premium: true}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+natous-test> db.tours.find()
+[
+  {
+    _id: ObjectId('6912cebd081ddb618863b112'),
+    name: 'The sea Explore',
+    price: 497,
+    rating: 4.8
+  },
+  {
+    _id: ObjectId('6912cebd081ddb618863b113'),
+    name: 'The snow Adventurer',
+    price: 997,
+    rating: 4.9,
+    difficulty: 'easy',
+    peice: 597,
+    premium: true
+  },
+  {
+    _id: ObjectId('6912d13a081ddb618863b114'),
+    name: 'The sea Explore22222',
+    price: 1497,
+    rating: 4.1
+  }
+]
+natous-test>
+
+natous-test>
+
+natous-test>
+
+natous-test>
+
+natous-test>
+
+natous-test>
+
+natous-test>
+
+natous-test> db.tours.find()
+[
+  {
+    _id: ObjectId('6912cebd081ddb618863b112'),
+    name: 'The sea Explore',
+    price: 497,
+    rating: 4.8
+  },
+  {
+    _id: ObjectId('6912cebd081ddb618863b113'),
+    name: 'The snow Adventurer',
+    price: 997,
+    rating: 4.9,
+    difficulty: 'easy',
+    peice: 597,
+    premium: true
+  },
+  {
+    _id: ObjectId('6912d13a081ddb618863b114'),
+    name: 'The sea Explore22222',
+    price: 1497,
+    rating: 4.1
+  }
+]
+natous-test> db.tours.deleteMany({ rating: {$lt: 4.8} })
+{ acknowledged: true, deletedCount: 1 }
+natous-test> db.tours.find()
+[
+  {
+    _id: ObjectId('6912cebd081ddb618863b112'),
+    name: 'The sea Explore',
+    price: 497,
+    rating: 4.8
+  },
+  {
+    _id: ObjectId('6912cebd081ddb618863b113'),
+    name: 'The snow Adventurer',
+    price: 997,
+    rating: 4.9,
+    difficulty: 'easy',
+    peice: 597,
+    premium: true
+  }
+]
+natous-test>
